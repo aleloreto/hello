@@ -9,7 +9,7 @@ namespace
 	std::atomic<bool> salir = false;
 }
 
-void funcion(int h)
+void sigintHandler(int h)
 {
 	std::cout << "SIGINT handler.\n";
 	salir = true; // sólo pone la señal de salida
@@ -32,15 +32,14 @@ private:
 
 int main()
 {
-	signal(SIGINT, funcion);
+	signal(SIGINT, sigintHandler);
 
 	while (!salir) {
-		// lo que haga el programa va aquí
+		// lo que haga el programa va acá
 		// ...
 
 		Unaclase uc{};
-		
-		if (salir) break;
+
 	}
 }
 
